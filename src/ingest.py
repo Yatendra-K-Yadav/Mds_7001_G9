@@ -47,9 +47,13 @@ popcols=list(pop.columns)
 agecols=popcols[5:5+len(bands)]
 pop.columns=popcols[:5]+bands+popcols[5+len(bands):]
 pop=pop.rename(columns={popcols[0]:'year',popcols[3]:'abs_lga_code',popcols[4]:'abs_lga_name'})
-adult_bands=[b for b in bands if re.match(r'^(\d+)',b) and int(re.match(r'^(\d+)',b).group(1))>=20]
+age_bands=[b for b in bands if b!='Total persons']      # exclude the pre-computed total
+adult_bands=[b for b in age_bands if re.match(r'^(\d+)',b) and int(re.match(r'^(\d+)',b).group(1))>=20]
 pop['adults_20plus']=pop[adult_bands].apply(pd.to_numeric,errors='coerce').sum(axis=1)
-pop['pop_total']=pop[bands].apply(pd.to_numeric,errors='coerce').sum(axis=1)
+pop['pop_total']=pd.to_numeric(pop['Total persons'],errors='coerce')
+# validation: summed bands must equal the published total
+_chk=pop[age_bands].apply(pd.to_numeric,errors='coerce').sum(axis=1)
+assert (abs(_chk-pop['pop_total'])<2).all(), 'age bands do not sum to published total'
 pop['year']=pop['year'].astype(int)
 pop['lga_key']=pop['abs_lga_name'].map(norm)
 pop=pop[['year','abs_lga_code','abs_lga_name','lga_key','adults_20plus','pop_total']]

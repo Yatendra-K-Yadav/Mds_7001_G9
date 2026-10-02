@@ -3,4 +3,14 @@ __pycache__/
 *.pyc
 .DS_Store
 .ipynb_checkpoints/
-data/raw/
+
+# Raw data: commit ONLY the four files the pipeline actually reads.
+# The rest (SA1/SA2 cubes, unused income tables, CPI xlsx) stay local —
+# CPI is pulled live from the ABS SDMX API in src/ingest.py
+data/raw/**
+!data/raw/
+!data/raw/*/
+!data/raw/Gaming Machine Data by Local Government Areas/gaming_machine_lga.csv
+!data/raw/Regional population by age and sex/32350DS0006_2001-25.xlsx
+!data/raw/SEIFA/Local Government Area, Indexes, SEIFA 2021.xlsx
+!data/raw/Personal Income in Australia/Table 1 - Total income, earners and summary statistics by geography, 2018-19 to 2022-23.xlsx
