@@ -1,5 +1,6 @@
 """Phase 2 — parse all five sources into tidy frames and build the analysis table."""
 import pandas as pd, numpy as np, openpyxl, re, unicodedata, urllib.request, io
+import os
 
 RAW='data/raw'; INT='data/interim'; OUT='data/processed'
 
@@ -126,7 +127,7 @@ df['loss_per_egm']=df['real_win_2025']/df['operational_egms']
 df['egms_per_1000_adults']=1000*df['operational_egms']/df['adults_20plus']
 df['irsd_quintile']=pd.qcut(df['irsd_score'],5,labels=['Q1 most disadv','Q2','Q3','Q4','Q5 least disadv'])
 
-import os; os.makedirs(OUT,exist_ok=True)
+os.makedirs(OUT,exist_ok=True)
 df.to_csv(f'{OUT}/analysis_table.csv',index=False)
 seifa.to_csv(f'{INT}/seifa_qld.csv',index=False)
 pop.to_csv(f'{INT}/population_qld.csv',index=False)
