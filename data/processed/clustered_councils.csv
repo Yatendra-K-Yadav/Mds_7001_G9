@@ -1,4 +1,4 @@
-lga_key,lga_raw,years,loss_per_adult,egms_per_1000_adults,loss_per_egm,irsd_score,median_income,adults_20plus,cluster,cluster_name,seifa_tercile
+lga_key,lga_raw,years,loss_per_adult,egms_per_1000_adults,loss_per_egm,irsd_score,median_income,adults,cluster,cluster_name,seifa_tercile
 BANANA,BANANA,5,802.12053027497,12.70727328794527,63275.51758568055,992.0,54986.333333333336,10869.0,2,Low loss / few machines / low per-machine,Least disadv
 BRISBANE,BRISBANE,5,740.2594680386194,7.463382310139859,99453.55765385924,1045.0,60632.333333333336,1018359.6,0,Mid loss / few machines / high per-machine,Least disadv
 BUNDABERG,BUNDABERG,5,1040.6894520653827,13.589136876118571,76576.76859873295,924.0,44642.0,80856.8,1,High loss / many machines / low per-machine,Most disadv

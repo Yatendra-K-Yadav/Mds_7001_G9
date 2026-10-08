@@ -1,4 +1,4 @@
-year,abs_lga_code,abs_lga_name,lga_key,adults_20plus,pop_total
+year,abs_lga_code,abs_lga_name,lga_key,adults,pop_total
 2001,30250,Aurukun,AURUKUN,643,1074
 2001,30300,Balonne,BALONNE,3739,5473
 2001,30370,Banana,BANANA,10821,15534
